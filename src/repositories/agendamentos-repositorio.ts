@@ -3,11 +3,12 @@ import { Agendamentos, AgendamentosParams, AgendamentosResponse } from './protoc
 
 export class AgendamentosRepositorio implements Agendamentos {
   async save(data: AgendamentosParams): Promise<boolean> {
+    console.log(data)
     try {
       const rows = await db('agendamentos').insert({
-        exame_id: data.exameId,
+        exame_id: data.exame_id,
+        dataCriacao: data.dataAgendamento,
         observacao: data.observacao,
-        dataCriacao: data.dataAgendamento
       }).returning('id')
       if (rows.length === 0) {
         throw new Error('Nao foi possivel concluir o agendamento')

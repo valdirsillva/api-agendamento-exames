@@ -1,7 +1,7 @@
 export interface AgendamentosParams {
-  exameId: number
+  exame_id: number
   observacao: string
-  dataAgendamento: Date
+  dataAgendamento: string
 }
 
 export interface AgendamentosResponse extends AgendamentosParams {

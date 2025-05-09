@@ -5,7 +5,7 @@ export class CriarAgendamento {
   constructor(private readonly agendamentoRepositorio: AgendamentosRepositorio) { }
 
   async execute(data: AgendamentosParams) {
-    if (!data.exameId) {
+    if (!data.exame_id) {
       throw new Error('O exame não foi informado')
     }
 
