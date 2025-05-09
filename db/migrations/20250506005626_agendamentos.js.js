@@ -6,7 +6,7 @@ exports.up = function (knex) {
   return knex.schema.createTable("agendamentos", tbl => {
     tbl.increments('id')
     tbl.integer('exame_id').unsigned().notNullable()
-    tbl.timestamp('dataCriacao').defaultTo(knex.fn.now())
+    tbl.timestamp('dataCriacao').notNullable()
     tbl.text('observacao', 130).nullable()
     tbl.foreign('exame_id').references('id').inTable('exames')
   })

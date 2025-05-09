@@ -6,7 +6,8 @@ export class AgendamentosRepositorio implements Agendamentos {
     try {
       const rows = await db('agendamentos').insert({
         exame_id: data.exameId,
-        observacao: data.observacao
+        observacao: data.observacao,
+        dataCriacao: data.dataAgendamento
       }).returning('id')
       if (rows.length === 0) {
         throw new Error('Nao foi possivel concluir o agendamento')
@@ -20,7 +21,14 @@ export class AgendamentosRepositorio implements Agendamentos {
 
   async get(): Promise<AgendamentosResponse[]> {
     try {
-      const response = await db('agendamentos').select('*')
+      const response = await db('agendamentos')
+        .join('exames', 'agendamentos.exame_id', '=', 'exames.id')
+        .select(
+          'agendamentos.id',
+          'agendamentos.observacao',
+          'agendamentos.dataCriacao',
+          'exames.nome as nome'
+        )
       if (response.length === 0) {
         throw new Error('Nenhum resultado encontrado')
       }
