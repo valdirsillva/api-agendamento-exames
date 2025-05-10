@@ -6,7 +6,12 @@
   "scripts": {
     "dev": "tsc --noEmit && tsx --watch src/server.ts",
     "build": "tsc",
-    "start": "node ./build/server.js"
+    "start": "node ./build/server.js",
+    "migrate:latest": "knex migrate:latest",
+    "migrate:rollback": "knex migrate:rollback",
+    "migrate:make": "knex migrate:make",
+    "migrate:status": "knex migrate:status",
+    "seed:run": "knex seed:run"
   },
   "repository": {
     "type": "git",
