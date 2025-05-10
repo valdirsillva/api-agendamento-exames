@@ -2,6 +2,7 @@ import { Request, Response, NextFunction } from 'express'
 import { CriarAgendamento } from '../use-cases/criar-agendamento'
 import { ListarAgendamentos } from '../use-cases/listar-agendamentos'
 import { DeletarAgendamento } from '../use-cases/deletar-agendamento'
+import { AgendamentosResponse } from '../repositories/protocols/agendamentos'
 
 export interface RequestParams {
   exameId: number
@@ -48,7 +49,7 @@ export class AgendamentosController {
     }
   }
 
-  removerAgendamento = async (req: Request<{ exameId: number }>, res: Response, next: NextFunction) => {
+  public async removerAgendamento(req: Request<{ exameId: number }>, res: Response, next: NextFunction) {
     const agendamentoId: number = req.params.exameId
 
     try {

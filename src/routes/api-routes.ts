@@ -1,8 +1,8 @@
 import express, { Request, Response, NextFunction } from 'express'
 import { AgendamentosController } from '../controllers/agendamentos-controller'
 import { ExamesController } from '../controllers/exames-controller'
-import { getAgendamentoUseCases } from '../factories/agendamento-factorie'
-import { getExameUseCases } from '../factories/exame-factorie'
+import { getAgendamentoUseCases } from '../factories/agendamento-factory'
+import { getExameUseCases } from '../factories/exame-factory'
 
 const router = express.Router()
 
