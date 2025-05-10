@@ -1,0 +1,43 @@
+version: '3'
+services:
+  backend:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: "api"
+    ports:
+      - "${PORT}:${PORT}"
+    expose:
+      - "${PORT}"
+    depends_on:
+      postgres:
+        condition: service_healthy
+    env_file:
+      - .env
+    networks:
+      - local-network
+    command: npm run start
+
+  postgres:
+    image: postgres
+    container_name: "pg"
+    ports:
+      - "${POSTGRES_PORT}:${POSTGRES_PORT}"
+    expose:
+      - "${POSTGRES_PORT}"
+    env_file:
+      - .env
+    environment:
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_USER_PW}
+    healthcheck:
+      test: [ "CMD-SHELL", "pg_isready", "-d", "db_prod" ]
+      interval: 30s
+      timeout: 60s
+      retries: 5
+      start_period: 70s
+    volumes:
+      - postgres:/var/lib/postgresql/data/
+      
+volumes:
+  postgres:
