@@ -3,7 +3,6 @@ import { Agendamentos, AgendamentosParams, AgendamentosResponse } from './protoc
 
 export class AgendamentosRepositorio implements Agendamentos {
   async save(data: AgendamentosParams): Promise<boolean> {
-    console.log(data)
     try {
       const rows = await db('agendamentos').insert({
         exame_id: data.exame_id,

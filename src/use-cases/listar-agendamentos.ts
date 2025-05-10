@@ -1,4 +1,4 @@
-import { AgendamentosRepositorio } from "../repositories/agendamentos-repositorio";
+import { AgendamentosRepositorio } from "../repositories/agendamentos-repositorio"
 
 export class ListarAgendamentos {
   constructor(private readonly agendamentoRepositorio: AgendamentosRepositorio) { }
