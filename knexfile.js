@@ -1,13 +1,14 @@
+require('dotenv').config()
 
 module.exports = {
   development: {
     client: 'pg',
     connection: {
-      database: process.env.DATABASE_NAME || 'db_pg_database',
-      user: process.env.POSTGRES_USER || 'postgres',
-      password: process.env.POSTGRES_USER_PW || 'jhondoe!2324',
-      port: process.env.POSTGRES_PORT || 5432,
-      host: process.env.POSTGRES_HOST || 'localhost'
+      database: process.env.DATABASE_NAME,
+      user: process.env.POSTGRES_USER,
+      password: process.env.POSTGRES_USER_PW,
+      port: process.env.POSTGRES_PORT,
+      host: process.env.POSTGRES_HOST
     },
     migrations: {
       directory: './db/migrations'
@@ -19,6 +20,7 @@ module.exports = {
   production: {
     client: 'pg',
     connection: process.env.DATABASE_URL,
+    pool: { min: 2, max: 10 },
     migrations: {
       directory: './db/migrations'
     },
