@@ -9,9 +9,9 @@ const useCaseListar = new ListarAgendamentos(agendamentoRepositorio)
 const useCaseDeletar = new DeletarAgendamento(agendamentoRepositorio)
 
 export const getAgendamentoUseCases = () => {
-	return {
-		useCaseCriar,
-		useCaseListar,
-		useCaseDeletar,
-	}
+  return {
+    useCaseCriar,
+    useCaseListar,
+    useCaseDeletar,
+  }
 }
