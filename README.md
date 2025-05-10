@@ -26,11 +26,23 @@ yarn install
 Crie um arquivo `.env` com as variáveis de ambiente produção (exemplo: porta da API, URL do banco de dados, etc.). Exemplo:
 
 Ambiente de produção:
+
 ```env
 PORT=5000
 DATABASE_URL=postgresql://usuario:senha@localhost:5432/seu_banco
 ```
 
+Executar as migrations para gerar o banco de dados e a seed para alimentar as tabelas.
+
+```
+npm run migrate:latest
+npm run seed:run
+```
+
+Iniciar aplicação.
+```
+npm run dev
+```
 Ambiente de desenvolvimento:
 
 ```env
@@ -39,7 +51,17 @@ DATABASE_NAME=
 POSTGRES_USER= 
 POSTGRES_PASSWORD=
 POSTGRES_PORT=5432
-POSTGRES_HOST=
+```
+Executar as migrations para gerar o banco de dados e a seed para alimentar as tabelas.
+
+```
+npm run migrate:latest
+npm run seed:run
+```
+
+Iniciar aplicação.
+```
+npm run dev
 ```
 
 ## 📁 Endpoints Disponíveis
@@ -108,4 +130,3 @@ POSTGRES_HOST=
 * **PostgresSQL**
 * **Material UI**
 * **Tailwindcss**    
-
